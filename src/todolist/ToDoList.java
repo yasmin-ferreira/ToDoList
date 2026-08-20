@@ -88,7 +88,26 @@ public class ToDoList{
                 }
                     
                 case 4 -> {
+                     System.out.println("\nDigite o numero da tafera que deseja aniquilar: ");
+                     int numeroExcluir = scanner.nextInt();
+                     
+                     int indicieExcluir = numeroExcluir - 1;
+                     
+                     if(indicieExcluir >= 0 && indicieExcluir < tarefas.length && tarefas[indicieExcluir] != null){
+                         tarefas[indicieExcluir] = null;
+                         concluidas[indicieExcluir] = false;
+                         
+                         System.out.println("Tarefa aniquilada >:)");
+                     }else{
+                         System.out.println("Tarefa invalida, num deu :(");
+                     }
                 }
+                
+                case 5 -> {
+                    System.out.println("Thiau seu corninho(a), representatividade né");
+                }
+                
+                default -> System.out.println("NAO EXISTE ESSA OPCAO, seu animal");
             }
         }
     }
