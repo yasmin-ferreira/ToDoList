@@ -18,6 +18,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private static final String senha = "Teste123";
     /**
      * Creates new form TelaLogin
+     * 
      */
     public TelaLogin() {
         initComponents();
@@ -49,6 +50,8 @@ public class TelaLogin extends javax.swing.JFrame {
         jTextFieldUsuário.addActionListener(this::jTextFieldUsuárioActionPerformed);
 
         jLabel3.setText("Senha");
+
+        jPasswordFieldSenha.addActionListener(this::jPasswordFieldSenhaActionPerformed);
 
         jButtonEntrar.setFont(new java.awt.Font("Swis721 Cn BT", 1, 18)); // NOI18N
         jButtonEntrar.setText("Entrar");
@@ -120,6 +123,10 @@ public class TelaLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro: Usuário ou senha incorreto!");
         }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
+
+    private void jPasswordFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldSenhaActionPerformed
 
     /**
      * @param args the command line arguments
