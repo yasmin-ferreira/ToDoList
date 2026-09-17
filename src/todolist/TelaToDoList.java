@@ -35,7 +35,7 @@ public class TelaToDoList extends javax.swing.JFrame {
         jComboBoxOpções = new javax.swing.JComboBox<>();
         jButtonAdicionarTarefa = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableListaTarefaStatus = new javax.swing.JTable();
+        jTableTarefas = new javax.swing.JTable();
         jButtonConcluirTarefa = new javax.swing.JButton();
         jButtonRemoverTarefa = new javax.swing.JButton();
 
@@ -62,7 +62,7 @@ public class TelaToDoList extends javax.swing.JFrame {
 
         jButtonAdicionarTarefa.setText("Adicionar");
 
-        jTableListaTarefaStatus.setModel(new javax.swing.table.DefaultTableModel(
+        jTableTarefas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -81,7 +81,7 @@ public class TelaToDoList extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTableListaTarefaStatus);
+        jScrollPane2.setViewportView(jTableTarefas);
 
         jButtonConcluirTarefa.setText("Concluir");
 
@@ -168,7 +168,7 @@ public class TelaToDoList extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTableListaTarefaStatus;
+    private javax.swing.JTable jTableTarefas;
     private javax.swing.JTextField jTextFieldDescritaoTarefa;
     // End of variables declaration//GEN-END:variables
 }
