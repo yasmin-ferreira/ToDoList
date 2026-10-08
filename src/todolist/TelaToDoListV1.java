@@ -4,6 +4,10 @@
  */
 package todolist;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.nio.Buffer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -25,6 +29,7 @@ public class TelaToDoListV1 extends javax.swing.JFrame {
     private final ArrayList<String> tarefas = new ArrayList<>();
     private final ArrayList<String> tarefasFiltradas = new ArrayList<>();
     
+    
     /**
      * Creates new form TelaToDoList
      */
@@ -38,6 +43,13 @@ public class TelaToDoListV1 extends javax.swing.JFrame {
         model.setRowCount(0);
         
         setTitle("Lista de tarefaws");
+        
+        carregarTarefas();
+        preencherTabela();
+        atualizarEstatisticas();
+        
+        
+        
     }
 
     /**
@@ -68,6 +80,8 @@ public class TelaToDoListV1 extends javax.swing.JFrame {
         jTextField3.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTextFieldDescricaoTarefa.addActionListener(this::jTextFieldDescricaoTarefaActionPerformed);
 
         jButtonAdicionarTarefa.setText("Adicionar");
         jButtonAdicionarTarefa.addActionListener(this::jButtonAdicionarTarefaActionPerformed);
@@ -221,6 +235,8 @@ public class TelaToDoListV1 extends javax.swing.JFrame {
                 
         tarefas.add(jTextFieldDescricaoTarefa.getText() + ";" + NAO_CONCLUIDA + ";" + dataAtual.format(formato));
         
+        salvarTarefa();
+        
         atualizarEstatisticas();
         
         preencherTabela();
@@ -243,6 +259,10 @@ public class TelaToDoListV1 extends javax.swing.JFrame {
         String[] dados = tarefas.get(indiceTarefaSelecionada).split(";");
         
         tarefas.set(indiceTarefaSelecionada, dados[0] + ";" + CONCLUIDA + ";" + dados[2]);
+        
+        salvarTarefa();
+        
+        atualizarEstatisticas();
         
         filtrarTabela();
         
@@ -275,6 +295,10 @@ public class TelaToDoListV1 extends javax.swing.JFrame {
             preencherTabela();
         }
         
+        salvarTarefa();
+        
+        atualizarEstatisticas();
+        
         filtrarTabela();
         
         preencherTabela();
@@ -291,6 +315,10 @@ public class TelaToDoListV1 extends javax.swing.JFrame {
     private void jTextFieldTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTotalActionPerformed
         
     }//GEN-LAST:event_jTextFieldTotalActionPerformed
+
+    private void jTextFieldDescricaoTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoTarefaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDescricaoTarefaActionPerformed
 
     private void preencherTabela(){
         ArrayList <String> listaTarefas;
@@ -398,6 +426,40 @@ public class TelaToDoListV1 extends javax.swing.JFrame {
         }
         return quantidadeNaoConcluida;
     }
+    
+    private void salvarTarefa(){
+    
+        try {
+            FileWriter arquivo = new FileWriter("tarefinhas.txt");
+            
+            for(String tarefa : tarefas){
+                arquivo.write(tarefa + "\n");
+            }
+            arquivo.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar as tarefas");
+        }
+        
+    }
+    
+    private void carregarTarefas(){
+        try {
+            BufferedReader arquivo = new BufferedReader(new FileReader("tarefinhas.txt"));
+            
+            String tarefa;
+            
+            while((tarefa = arquivo.readLine()) !=null){
+                tarefas.add(tarefa);
+            }
+            
+            arquivo.close();
+            
+        } catch (Exception e) {
+            
+        }
+
+    }
+    
     /**
      * @param args the command line arguments
      */
